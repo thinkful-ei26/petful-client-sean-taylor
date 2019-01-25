@@ -32,6 +32,7 @@ export const fetchCat = () => dispatch =>  {
             dispatch(fetchCatSuccess(cats));
         })
         .catch(err => dispatch(fetchCatError(err)));
+    
 }
 
 export const deleteCat = () => dispatch => {

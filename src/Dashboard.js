@@ -15,11 +15,21 @@ export class Dashboard extends Component {
     }
 
     componentDidMount() {
+        console.log('these dispatched');
         this.props.dispatch(fetchCat());
         this.props.dispatch(fetchDog());
     }
+    
+    buttonClick() {
+        console.log('I have been adopted!'); 
+        // console.log(pet.petType);
+        console.log(this); 
+        this.props.dispatch(deleteCat());
+
+    }
 
     render() {
+        console.log(this.props);
         return ( 
         <div>
             <Pet pet={this.props.catToAdopt} onAdoptPet={this.buttonClick} />
@@ -29,8 +39,11 @@ export class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => {
+    console.log(state);
+    return ({
     catToAdopt: state.cat.data,
     dogToAdopt: state.dog.data
-});
+    })
+};
 export default connect(mapStateToProps)(Dashboard);

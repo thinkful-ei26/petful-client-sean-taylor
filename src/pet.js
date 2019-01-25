@@ -1,4 +1,6 @@
 import React from 'react'; 
+import {fetchCat, fetchDog, deleteCat, deleteDog} from './actions';
+import { bindActionCreators } from '../../../../../AppData/Local/Microsoft/TypeScript/3.2/node_modules/redux';
 
 export default function Pet(props) {
     if (!props.pet) {
