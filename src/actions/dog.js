@@ -2,25 +2,25 @@ import API_BASE_URL from '../config';
 
 
 const fetchDogRequest = () => ({
-    type:FETCH_DOG_REQUEST_BEGIN
+    type: 'FETCH_DOG_REQUEST'
 })
 
-const fetchDogSuccess = (dogs) => ({
-    type: FETCH_DOG_SUCCESS,
-    dogs
+const fetchDogSuccess = (dog) => ({
+    type: 'FETCH_DOG_SUCCESS',
+    dog
 })
 
 const fetchDogError = (error) => ({
-    type:FETCH_DOG_ERROR, 
+    type: 'FETCH_DOG_ERROR', 
     error
 })
 
 const deleteDogSuccess = () => ({
-    type:DELETE_DOG_SUCCESS
+    type: 'DELETE_DOG_SUCCESS'
 })
 
 const deleteDogError = (error) => ({
-    type:DELETE_DOG_ERROR,
+    type: 'DELETE_DOG_ERROR',
     error
 })
 
