@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'; 
 import Pet from './pet'; 
-import {fetchCat, fetchDog} from './actions';
+import {fetchCat, fetchDog, deleteCat, deleteDog} from './actions';
 
 export class Dashboard extends Component {
-    buttonClick(pet) {
-        console.log('I have been adopted!'); 
-        console.log(pet);
-    }
 
     componentDidMount() {
         console.log('these dispatched');
         this.props.dispatch(fetchCat());
         this.props.dispatch(fetchDog());
     }
+    
+    buttonClick() {
+        console.log('I have been adopted!'); 
+        // console.log(pet.petType);
+        console.log(this); 
+        this.props.dispatch(deleteCat());
+
+    }
+
 
     render() {
         console.log(this.props);

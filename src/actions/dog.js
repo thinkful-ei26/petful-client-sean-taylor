@@ -24,24 +24,31 @@ const deleteDogError = (error) => ({
     error
 })
 
-export function fetchDog(dispatch) {
+export function fetchDog() {
+    console.log('fetch dog');
+    return(dispatch) => {
     dispatch(fetchDogRequest());
-    return fetch(`${API_BASE_URL}/api/dogs`)
-        .then(res => res.json())
-        .then(dogs => {
-            dispatch(fetchDogSuccess(dogs));
-        })
-        .catch(err => dispatch(fetchDogError(err)));
+        return fetch(`${API_BASE_URL}/api/dog`)
+            .then(res => res.json(res))
+            .then(dogs => {
+                dispatch(fetchDogSuccess(dogs));
+            })
+            .catch(err => dispatch(fetchDogError(err)));
+        }
 }
 
-export function deleteDog(dispatch) {
-    dispatch(fetchDogRequest()); 
-    return fetch(`${API_BASE_URL}/api/dogs`, {
-        method:'delete'
-    })
-    .then(() => {
-        dispatch(deleteDogSuccess())
-    })
-    .then(() => dispatch(fetchDog()))
-    .catch(err => dispatch(deleteDogError(err))); 
+export function deleteDog() {
+    console.log('dog delete');
+    return (dispatch) => {
+        dispatch(fetchDogRequest()); 
+        return fetch(`${API_BASE_URL}/api/dog`, {
+            method:'DELETE'
+        })
+        .then(() => {
+            dispatch(deleteDogSuccess())
+        })
+        .then(() => dispatch(fetchDog()))
+        .catch(err => dispatch(deleteDogError(err))); 
+        
+    }
 }

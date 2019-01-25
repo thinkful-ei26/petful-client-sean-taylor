@@ -1,7 +1,10 @@
 import React from 'react'; 
+import {fetchCat, fetchDog, deleteCat, deleteDog} from './actions';
+import { bindActionCreators } from '../../../../../AppData/Local/Microsoft/TypeScript/3.2/node_modules/redux';
 
 export default function Pet(props) {
     console.log(props);
+    const {fetchCat, fetchDog, deleteCat, deleteDog} = bindActionCreators
     return (
     <div>
         <section className="animalSection">
