@@ -1,0 +1,47 @@
+import API_BASE_URL from '../config';
+
+
+const fetchDogRequest = () => ({
+    type:FETCH_DOG_REQUEST_BEGIN
+})
+
+const fetchDogSuccess = (dogs) => ({
+    type: FETCH_DOG_SUCCESS,
+    dogs
+})
+
+const fetchDogError = (error) => ({
+    type:FETCH_DOG_ERROR, 
+    error
+})
+
+const deleteDogSuccess = () => ({
+    type:DELETE_DOG_SUCCESS
+})
+
+const deleteDogError = (error) => ({
+    type:DELETE_DOG_ERROR,
+    error
+})
+
+export function fetchDog(dispatch) {
+    dispatch(fetchDogRequest());
+    return fetch(`${API_BASE_URL}/api/dogs`)
+        .then(res => res.json())
+        .then(dogs => {
+            dispatch(fetchDogSuccess(dogs));
+        })
+        .catch(err => dispatch(fetchDogError(err)));
+}
+
+export function deleteDog(dispatch) {
+    dispatch(fetchDogRequest()); 
+    return fetch(`${API_BASE_URL}/api/dogs`, {
+        method:'delete'
+    })
+    .then(() => {
+        dispatch(deleteDogSuccess())
+    })
+    .then(() => fetchDog(dispatch))
+    .catch(err => dispatch(deleteDogError(err))); 
+}
