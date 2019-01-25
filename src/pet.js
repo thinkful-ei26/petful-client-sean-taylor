@@ -1,7 +1,9 @@
 import React from 'react'; 
 
 export default function Pet(props) {
-    console.log(props);
+    if (!props.pet) {
+        return <p>No pet to display</p>;
+    }
     return (
     <div>
         <section className="animalSection">
@@ -16,7 +18,7 @@ export default function Pet(props) {
                         <dt className="breed">{props.pet.breed}</dt>
                         <dt className="story">{props.pet.story}</dt>
                     </dl>
-                    <button type="submit" onClick={()=> props.onAdoptPet(props.pet)} className="adoptButton">Adopt</button>
+                    <button type="submit" onClick={() => props.onAdoptPet(props.pet)} className="adoptButton">Adopt</button>
             </main>
         </section>
     </div>

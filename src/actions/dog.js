@@ -24,9 +24,9 @@ const deleteDogError = (error) => ({
     error
 })
 
-export function fetchDog(dispatch) {
+export const fetchDog = () => dispatch => {
     dispatch(fetchDogRequest());
-    return fetch(`${API_BASE_URL}/api/dogs`)
+    return fetch(`${API_BASE_URL}/api/dog`)
         .then(res => res.json())
         .then(dogs => {
             dispatch(fetchDogSuccess(dogs));
@@ -34,10 +34,10 @@ export function fetchDog(dispatch) {
         .catch(err => dispatch(fetchDogError(err)));
 }
 
-export function deleteDog(dispatch) {
+export const deleteDog = () => dispatch => {
     dispatch(fetchDogRequest()); 
-    return fetch(`${API_BASE_URL}/api/dogs`, {
-        method:'delete'
+    return fetch(`${API_BASE_URL}/api/dog`, {
+        method:'DELETE'
     })
     .then(() => {
         dispatch(deleteDogSuccess())

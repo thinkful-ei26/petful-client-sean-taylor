@@ -1,6 +1,7 @@
 const initialState = {data: null, error: null, loading: false};
 
 export default (state=initialState, action) => {
+  console.log(state);
   switch (action.type) {
     case 'FETCH_CAT_REQUEST':
       return {...state, loading: true};

@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'; 
 import Pet from './pet'; 
-import {fetchCat, fetchDog} from './actions';
+import {fetchCat, fetchDog, deleteCat, deleteDog} from './actions';
 
 export class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+        this.buttonClick = this.buttonClick.bind(this);
+    }
     buttonClick(pet) {
-        console.log('I have been adopted!'); 
-        console.log(pet);
+        if (pet.petType === 'cat') this.props.dispatch(deleteCat());
+        else this.props.dispatch(deleteDog());
     }
 
     componentDidMount() {
-        console.log('these dispatched');
         this.props.dispatch(fetchCat());
         this.props.dispatch(fetchDog());
     }
 
     render() {
-        console.log(this.props);
         return ( 
         <div>
             <Pet pet={this.props.catToAdopt} onAdoptPet={this.buttonClick} />
@@ -26,11 +28,8 @@ export class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    console.log(state);
-    return ({
+const mapStateToProps = state => ({
     catToAdopt: state.cat.data,
     dogToAdopt: state.dog.data
-    })
-};
+});
 export default connect(mapStateToProps)(Dashboard);

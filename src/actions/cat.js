@@ -24,9 +24,9 @@ const deleteCatError = (error) => ({
     error
 })
 
-export function fetchCat(dispatch) {
+export const fetchCat = () => dispatch =>  {
     dispatch(fetchCatRequest());
-    return fetch(`${API_BASE_URL}/api/cats`)
+    return fetch(`${API_BASE_URL}/api/cat`)
         .then(res => res.json())
         .then(cats => {
             dispatch(fetchCatSuccess(cats));
@@ -34,10 +34,10 @@ export function fetchCat(dispatch) {
         .catch(err => dispatch(fetchCatError(err)));
 }
 
-export function deleteCat(dispatch) {
+export const deleteCat = () => dispatch => {
     dispatch(fetchCatRequest()); 
-    return fetch(`${API_BASE_URL}/api/cats`, {
-        method:'delete'
+    return fetch(`${API_BASE_URL}/api/cat`, {
+        method:'DELETE'
     })
     .then(() => {
         dispatch(deleteCatSuccess())
