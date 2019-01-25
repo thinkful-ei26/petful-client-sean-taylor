@@ -1,6 +1,7 @@
 import React from 'react'; 
 
 export default function Pet(props) {
+    console.log(props);
     return (
     <div>
         <section className="animalSection">
