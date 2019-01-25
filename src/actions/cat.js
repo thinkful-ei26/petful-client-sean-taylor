@@ -42,6 +42,6 @@ export function deleteCat(dispatch) {
     .then(() => {
         dispatch(deleteCatSuccess())
     })
-    .then(() => fetchCat(dispatch))
+    .then(() => dispatch(fetchCat()))
     .catch(err => dispatch(deleteCatError(err))); 
 }

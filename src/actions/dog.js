@@ -42,6 +42,6 @@ export function deleteDog(dispatch) {
     .then(() => {
         dispatch(deleteDogSuccess())
     })
-    .then(() => fetchDog(dispatch))
+    .then(() => dispatch(fetchDog()))
     .catch(err => dispatch(deleteDogError(err))); 
 }
