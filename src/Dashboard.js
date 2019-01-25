@@ -8,6 +8,7 @@ export class Dashboard extends Component {
         super(props);
         this.buttonClick = this.buttonClick.bind(this);
     }
+    
     buttonClick(pet) {
         if (pet.petType === 'cat') this.props.dispatch(deleteCat());
         else this.props.dispatch(deleteDog());
