@@ -27,8 +27,11 @@ const deleteCatError = (error) => ({
 export const fetchCat = () => dispatch =>  {
     dispatch(fetchCatRequest());
     return fetch(`${API_BASE_URL}/api/cat`)
-        .then(res => res.json())
+        .then(res => {
+            return res.json();
+        })
         .then(cats => {
+            
             dispatch(fetchCatSuccess(cats));
         })
         .catch(err => dispatch(fetchCatError(err)));

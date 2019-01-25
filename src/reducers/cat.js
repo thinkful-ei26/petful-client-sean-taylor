@@ -1,4 +1,5 @@
-const initialState = {data: [], error: null, loading: false};
+
+const initialState = {data: null, error: null, loading: false};
 
 export default (state=initialState, action) => {
   console.log(state);
@@ -6,7 +7,7 @@ export default (state=initialState, action) => {
     case 'FETCH_CAT_REQUEST':
       return {...state, loading: true};
     case 'FETCH_CAT_SUCCESS':
-      return {...state, data: action.cat, loading: false};
+      return {...state, data:action.cat, loading: false};
     case 'FETCH_CAT_ERROR':
       return {...state, error: action.error, loading: false};
     case 'DELETE_CAT_SUCCESS':

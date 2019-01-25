@@ -19,14 +19,6 @@ export class Dashboard extends Component {
         this.props.dispatch(fetchCat());
         this.props.dispatch(fetchDog());
     }
-    
-    buttonClick() {
-        console.log('I have been adopted!'); 
-        // console.log(pet.petType);
-        console.log(this); 
-        this.props.dispatch(deleteCat());
-
-    }
 
     render() {
         console.log(this.props);

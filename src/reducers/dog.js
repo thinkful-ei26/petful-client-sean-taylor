@@ -1,4 +1,5 @@
-const initialState = {data: [], error: null, loading: false};
+
+const initialState = {data: null, error: null, loading: false};
 
 export default (state=initialState, action) => {
   switch (action.type) {
